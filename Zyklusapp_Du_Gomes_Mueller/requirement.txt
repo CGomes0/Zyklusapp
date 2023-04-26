@@ -1,4 +1,0 @@
-pandas
-altair
-pillow
-datetime
