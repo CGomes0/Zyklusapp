@@ -25,38 +25,66 @@ st.write("Nächster Zyklus ist am", datetime.strftime(next_date, european_format
 pain = st.slider('Wie stark sind deine Schmerzen? 1 schwach und 10 stark', 0, 10)
 st.write("Sie haben eine Stärke von", pain)
 
+st.text("Ich habe heute folgende Medikamente genommen:")
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    medi1 = st.selectbox(
+        "Morgen",
+        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        )
+    
+with col2:
+    medi2 = st.selectbox(
+        "Mittag",
+        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        )
+    
+with col3:
+     medi3 = st.selectbox(
+         "Abend",
+         ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+         )
+
+with col4:
+    medi4 = st.selectbox(
+        "Vor dem Schlafen",
+        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        )
+    
 
 if "visibility" not in st.session_state:
     st.session_state.visibility = "visible"
     st.session_state.disabled = False
 
 #Hauptteil der App, Eingabe der Beschwerden
-col1, col2, col3 = st.columns(3)
+col5, col6, col7 = st.columns(3)
 
-with col1:
+with col5:
     feeling = st.radio(
         "Wie fühlst du dich?", 
         ("😀", "😐", "😭", "😡"))
 
-with col2:
+with col6:
     intensity = st.radio(
         "Wie stark sind die Menstruationsblutungen?",
         ("Keine","Leicht", "Mittel", "Stark"))
     
-with col3:    
+with col7:    
     notice= st.text_area(
         "Meine Notizen:")
     
 
     
-col4, col5 = st.columns(2)
+col8, col9 = st.columns(2)
 
-with col4:
+with col8:
     ovutest = st.radio(
         "Habe ich einen Ovulationstest gemacht? Wenn ja, was war das Resultat?", 
         ("Keinen Test gemacht", "Positiv", "Negativ"))
 
-with col5:
+with col9:
     temperatur= st.text_input(
         "Meine gemessene Temperatur in °C:",
         "")
@@ -70,7 +98,11 @@ def save():
     
     data.update({
             str(date): {
-                'pain': pain, 
+                'pain': pain,
+                'medi1': medi1,
+                'medi2': medi2,
+                'medi3': medi3,
+                'medi4': medi4,
                 'feeling': feeling,
                 'intensity': intensity,
                 'notice': notice,
