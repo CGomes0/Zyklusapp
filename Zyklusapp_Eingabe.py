@@ -1,12 +1,12 @@
 import streamlit as st
 from datetime import datetime, date, timedelta 
 import json
-import requests
+from jsonbin import load_key, save_key
 
-headers = {
-    "authorization" : st.secrets["api_key"],
-    "content-type" : "application/json"
-    }
+#jsonbin
+jsonbin_secrets = st.secrets["jsonbin"]
+api_key = jsonbin_secrets["api_key"]
+bin_id = jsonbin_secrets["bin_id"]
 
 st.title("Mein Zyklustagebuch")
 
