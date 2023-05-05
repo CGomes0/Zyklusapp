@@ -1,25 +1,22 @@
 import streamlit as st
 from datetime import datetime, date, timedelta 
 import json
+import os
 
-st.title("Zyklusapp")
+st.title("Mein Zyklustagebuch")
 
-
-#date input on calendar
 date = st.date_input( 
-    "Wann war mein letzter Zyklus?",
+    "Heute ist der",
     date.today())
 
 #ISO date to european date
 european_format = "%d.%m.%Y"            
 st.write('Letzter Zyklus war am:', datetime.strftime(date, european_format))
 
+
 #next menstruation date calculated
 next_date = date + timedelta(days=28)
 st.write("Nächster Zyklus ist am", datetime.strftime(next_date, european_format))
-
-
-
 
 #Eingabe Stärke der Schmerzen
 pain = st.slider('Wie stark sind deine Schmerzen? 1 schwach und 10 stark', 0, 10)
@@ -120,4 +117,11 @@ def save():
     return 
 button = st.button('Speichern',on_click=save)
 
+#Secrets zugang
+st.write("DB username:", st.secrets["db_username"])
+st.write("DB password", st.secrets["db_password"])
+st.write("My secrets:", st.secrets["jsonbin"]["api_key"]["bin_id"])
 
+st.write(
+    "has environment variable been set:",
+    os.environ["db_username"] == st.secrets["db_username"])
