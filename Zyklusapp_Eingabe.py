@@ -1,7 +1,12 @@
 import streamlit as st
 from datetime import datetime, date, timedelta 
 import json
-import os
+import requests
+
+headers = {
+    "authorization" : st.secrets["api_key"],
+    "content-type" : "application/json"
+    }
 
 st.title("Mein Zyklustagebuch")
 
@@ -117,11 +122,4 @@ def save():
     return 
 button = st.button('Speichern',on_click=save)
 
-#Secrets zugang
-st.write("DB username:", st.secrets["db_username"])
-st.write("DB password", st.secrets["db_password"])
-st.write("My secrets:", st.secrets["jsonbin"]["api_key"]["bin_id"])
 
-st.write(
-    "has environment variable been set:",
-    os.environ["db_username"] == st.secrets["db_username"])
