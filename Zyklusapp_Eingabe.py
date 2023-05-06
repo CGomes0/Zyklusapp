@@ -10,18 +10,22 @@ bin_id = jsonbin_secrets["bin_id"]
 
 st.title("Mein Zyklustagebuch")
 
-date = st.date_input( 
-    "Heute ist der",
+#date used as key value in json
+date = st.date_input("Speicherdatum", date.today())
+
+#date input on calendar
+date_zyklus = st.date_input( 
+    "Wann war mein letzter Zyklus?",
     date.today())
 
 #ISO date to european date
 european_format = "%d.%m.%Y"            
-st.write('Letzter Zyklus war am:', datetime.strftime(date, european_format))
-
+st.write('Letzter Zyklus war am:', datetime.strftime(date_zyklus, european_format))
 
 #next menstruation date calculated
-next_date = date + timedelta(days=28)
+next_date = date_zyklus + timedelta(days=28)
 st.write("Nächster Zyklus ist am", datetime.strftime(next_date, european_format))
+
 
 #Eingabe Stärke der Schmerzen
 pain = st.slider('Wie stark sind deine Schmerzen? 1 schwach und 10 stark', 0, 10)
