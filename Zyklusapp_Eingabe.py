@@ -1,15 +1,8 @@
 import streamlit as st
 from datetime import datetime, date, timedelta 
 import json
-from jsonbin import load_key, save_key
 
-
-#jsonbin
-jsonbin_secrets = st.secrets["jsonbin"]
-api_key = jsonbin_secrets["api_key"]
-bin_id = jsonbin_secrets["bin_id"]
-
-st.title("Mein Zyklustagebuch")
+st.title("Zyklusapp")
 
 #date used as key value in json
 date = st.date_input("Speicherdatum", date.today())
@@ -28,6 +21,8 @@ next_date = date_zyklus + timedelta(days=28)
 st.write("Nächster Zyklus ist am", datetime.strftime(next_date, european_format))
 
 
+
+
 #Eingabe Stärke der Schmerzen
 pain = st.slider('Wie stark sind deine Schmerzen? 1 schwach und 10 stark', 0, 10)
 st.write("Sie haben eine Stärke von", pain)
@@ -39,25 +34,25 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     medi1 = st.selectbox(
         "Morgen",
-        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        ("-", "Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
         )
     
 with col2:
     medi2 = st.selectbox(
         "Mittag",
-        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        ("-", "Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
         )
     
 with col3:
      medi3 = st.selectbox(
          "Abend",
-         ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+         ("-", "Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
          )
 
 with col4:
     medi4 = st.selectbox(
         "Vor dem Schlafen",
-        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        ("-", "Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
         )
     
 
@@ -105,6 +100,7 @@ def save():
     
     data.update({
             str(date): {
+                "date_zyklus": date_zyklus,
                 'pain': pain,
                 'medi1': medi1,
                 'medi2': medi2,
