@@ -10,12 +10,29 @@ bin_id = jsonbin_secrets["bin_id"]
 
 
 #login
+with open('config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
+    
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    )    
+
+fullname, authentication_status, username = authenticator.login('Login', 'main')
+
+if authentication_status == True:
+    authenticator.logout('Logout', 'main')
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+    st.stop()
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
+    st.stop()
 
 
-
-
-
-
+#mainbody of the app
 st.title("Mein Zyklustagebuch")
 
 #date used as key value in json
