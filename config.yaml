@@ -1,0 +1,12 @@
+credentials:
+  usernames:
+    Caty:
+      email: catarina-pg@hotmail.com
+      name: Catarina Gomes
+      password: $2b$12$cq3ze6A9Wm6HzSDRTdQpL.lS/aHaCD4VADhspWWw4j2UTlS8nSnY.
+      
+cookie:
+  expiry_days: 0
+  key: Nm8dyaHkHsR6fdizMQizmtQ3noLFhdcU #aus randomkeygen.com
+  name: streamlitcookie
+      
