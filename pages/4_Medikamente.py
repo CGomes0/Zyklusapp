@@ -1,17 +1,15 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon May  1 18:04:36 2023
-
-@author: catar
-"""
-
 import streamlit as st
 import pandas as pd
-import json
+from jsonbin import load_data, save_data
+
+
+#jsonbin
+jsonbin_secrets = st.secrets["jsonbin"]
+api_key = jsonbin_secrets["api_key"]
+bin_id = jsonbin_secrets["bin_id"]
 
 #Dataframe with pandas for medis
-with open("data.json", "r")as file: 
-    file_medi1 = json.load(file)
+file_medi1=load_data(api_key, bin_id)
 
 medi1 = "medi1"
 Morgen = [day[medi1]for key, day in file_medi1.items() if medi1 in day]     #getting values from nested dictionary
