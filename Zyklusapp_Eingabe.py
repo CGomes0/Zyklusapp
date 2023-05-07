@@ -1,6 +1,12 @@
 import streamlit as st
 from datetime import datetime, date, timedelta 
-import json
+from jsonbin import load_data, save_data
+
+
+#jsonbin
+jsonbin_secrets = st.secrets["jsonbin"]
+api_key = jsonbin_secrets["api_key"]
+bin_id = jsonbin_secrets["bin_id"]
 
 st.title("Zyklusapp")
 
@@ -95,8 +101,7 @@ with col9:
 def save():
     
     
-    with open('data.json','r') as file:
-        data=json.load(file)
+    data=load_data(api_key, bin_id)
     
     data.update({
             str(date): {
@@ -115,8 +120,7 @@ def save():
         })
     
     #st.write(data)
-    with open('data.json','w') as file:
-        json.dump(data,file,indent=4)
+    save_data(api_key, bin_id, data)
         
         
            
