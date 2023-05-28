@@ -2,4 +2,3 @@ datetime
 pandas
 altair
 streamlit_authenticator
-jsonbin
