@@ -51,10 +51,10 @@ feel = "feeling"
 feelings = [day[feel]for key, day in file_feeling.items() if feel in day]   #getting values from nested dictionary
 
 dif = pd.DataFrame({
-    "feeling" : feelings,
-    "day" : file_feeling.keys()
+    "Stimmung" : feelings,
+    "Tag" : file_feeling.keys()
     })
 
 #st.write("Gemessene Werte", feelings)
 
-st.line_chart(dif, x= "day", y = "feeling")
+st.line_chart(dif, x= "Tag", y = "Stimmung")
