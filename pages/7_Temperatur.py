@@ -60,16 +60,16 @@ def temp_not_none(temperatures):
 
 
 df = pd.DataFrame({
-    "temperatur" : temperatures,
-    "day": file_temperature.keys()
+    "Temperatur" : temperatures,
+    "Tag": file_temperature.keys()
 })
 
 #st.write("Gemessene Werte", temp_not_none(temperatures))
 
 
 bar_chart = alt.Chart(df).mark_line().encode(
-        y='temperatur',
-        x='day',
+        y='Temperatur',
+        x='Tag',
     )
  
 st.altair_chart(bar_chart, use_container_width=True)
