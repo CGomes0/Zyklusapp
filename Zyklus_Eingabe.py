@@ -34,7 +34,7 @@ elif authentication_status == None:
 
 
 
-st.title("Zyklusapp")
+st.title("Mein Zyklustagebuch")
 
 
 #date input on calendar
@@ -64,25 +64,25 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     medi1 = st.selectbox(
         "Morgen",
-        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac", "Keine")
         )
     
 with col2:
     medi2 = st.selectbox(
         "Mittag",
-        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac", "Keine")
         )
     
 with col3:
      medi3 = st.selectbox(
          "Abend",
-         ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+         ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac", "Keine")
          )
 
 with col4:
     medi4 = st.selectbox(
         "Vor dem Schlafen",
-        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac")
+        ("Paracetamol", "Ibuprofen", "Acetylsalicylsäure", "Naproxen", "Diclofenac", "Keine")
         )
     
 
