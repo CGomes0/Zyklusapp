@@ -54,15 +54,15 @@ bleeding = [day[intensity]for key, day in file_intensity.items() if intensity in
   
 
 daf = pd.DataFrame({
-    "intensity" : bleeding,
-    "day" : file_intensity.keys()
+    "Intensität" : bleeding,
+    "Tag" : file_intensity.keys()
     })
 
 #st.write("Gemessene Werte", bleeding)
 
 
 bar_chart = alt.Chart(daf).mark_line().encode(
-    x = "day",
-    y = alt.Y("intensity", scale=alt.Scale(reverse=True)))
+    x = "Tag",
+    y = alt.Y("Intensität", scale=alt.Scale(reverse=True)))
 
 st.altair_chart(bar_chart, use_container_width = True)
