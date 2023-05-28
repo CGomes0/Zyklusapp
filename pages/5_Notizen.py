@@ -50,8 +50,8 @@ notes = [day[notice]for key, day in file_notice.items() if notice in day]   #get
 
 
 df = pd.DataFrame({
-    "notice" : notes,
-    "day" : file_notice.keys()
+    "Notizen" : notes,
+    "Tag" : file_notice.keys()
     })
 
 st.dataframe(df, width=1024, height=768)
