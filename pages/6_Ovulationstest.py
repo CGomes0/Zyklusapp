@@ -60,14 +60,14 @@ def ovu_not_none(ovutests):
 measured_ovu = ovu_not_none(ovutests)
 
 daf = pd.DataFrame({
-    "ovutest" : measured_ovu,
-    "day" : file_ovutest.keys()
+    "Ovulationstest" : measured_ovu,
+    "Tag" : file_ovutest.keys()
     })
 
 #st.write("Gemessene Werte", measured_ovu)
 
 bar_chart = alt.Chart(daf).mark_bar().encode(
-    x = "day",
-    y = alt.Y("ovutest", scale=alt.Scale(reverse=True)))
+    x = "Tag",
+    y = alt.Y("Ovulationstest", scale=alt.Scale(reverse=True)))
 
 st.altair_chart(bar_chart, use_container_width = True)
